@@ -47,14 +47,4 @@ If you're looking to:
 
 …this repo gives you a solid starting point.
 
----
 
-## 📬 Feedback
-
-Want to improve or extend the workflow? Found a bug? Open an issue or create a pull request.
-
----
-
-## License
-
-Free to use and remix. Just give credit if you're sharing it elsewhere.
