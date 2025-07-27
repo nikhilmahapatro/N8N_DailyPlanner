@@ -1,0 +1,131 @@
+{
+  "name": "N8N_DailyPlanner",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Bonjour mon ami! 👋\nIch naam ist Jarvis. How can I assist you today?",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -480,
+        -176
+      ],
+      "id": "13d15b73-489e-4e3f-ab44-b616a7371a86",
+      "name": "When chat message received",
+      "webhookId": "debf6e5c-7bd2-4570-9a84-ef2633433601"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -288,
+        -176
+      ],
+      "id": "4fc590a5-65d0-4b38-b1a5-442f080824e0",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        64
+      ],
+      "id": "93c293e2-b14b-4481-b88c-4fa654073c09",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "jR9tJkOJ0wiNTPmM",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1S8wIfu6vG7rd2vk8WpXK1cB2cjeWSCIhuJx8nE-hKCw",
+          "mode": "list",
+          "cachedResultName": "Daily_Planner_Sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1S8wIfu6vG7rd2vk8WpXK1cB2cjeWSCIhuJx8nE-hKCw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1S8wIfu6vG7rd2vk8WpXK1cB2cjeWSCIhuJx8nE-hKCw/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -144,
+        32
+      ],
+      "id": "1937ff76-7849-49a5-b254-31a41ee5bb80",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YaoI3dQrNWVnGJo6",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7b34c0a7-8ec6-4895-b395-bcad88d6ef21",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1821847a37c83b74369a621203657d9abd3a915883cbd21b09836640bb9be35d"
+  },
+  "id": "DrTQQ0BURExqAoWk",
+  "tags": []
+}
