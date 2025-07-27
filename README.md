@@ -17,7 +17,7 @@ A ready-to-use n8n workflow that:
 
 ---
 
-## 🖼 Demo Preview
+## Demo Preview
 
 Here’s a quick look at what the workflow setup looks like inside n8n:
 
